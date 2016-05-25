@@ -89,7 +89,7 @@ else
   echo ""
   if [[ ! -e /opt/agents/monitor/ ]]; 
   then
-       #echo "creating agents directory for installing n42agent"	
+       #echo "creating agents directory for installing monitoragent"	
        mkdir -p /opt/agents/monitor/
        if [ $? -ne 0 ];
        then
