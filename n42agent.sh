@@ -8,10 +8,10 @@
 # Description:       n42Agent
 ### END INIT INFO
 
-SCRIPT="stdbuf -oL nohup python /opt/agents/n42/Agent.py"
+SCRIPT="stdbuf -oL nohup python /opt/agents/monitor/Agent.py"
 #RUNAS=<USERNAME>
 
-NAME="n42Agent"
+NAME="monitorAgent"
 PIDFILE="/var/run/$NAME.pid"
 LOGFILE="/var/log/$NAME.log"
 
