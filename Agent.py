@@ -1,7 +1,7 @@
 import time
 import subprocess
 
-checks = ["python /opt/agents/n42/SystemCheck.py","python /opt/agents/n42/NetworkCheck.py"]
+checks = ["python /opt/agents/monitor/SystemCheck.py","python /opt/agents/monitor/NetworkCheck.py"]
 
 if __name__ == "__main__":
      i = 4;	
