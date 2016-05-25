@@ -1,24 +1,24 @@
 #!/bin/bash
 
-SERVICE_FILE="n42agent.sh"
+SERVICE_FILE="monitoragent.sh"
 DAEMON_FILE="Agent.py"
 SYSTEM_CHECK="SystemCheck.py"
 NETWORK_CHECK="NetworkCheck.py"
 
-echo "--- Download n42agent init script ---"
-wget -q -O "$SERVICE_FILE" 'https://gist.githubusercontent.com/kirann42/7e5a557680fdc672b187/raw/27acb36eddba56bca7ddcefe322f56712e813613/n42agent.sh'
+echo "--- Download monitoragent init script ---"
+wget -q -O "$SERVICE_FILE" 'https://raw.githubusercontent.com/basivireddy/server_monitor/master/monitoragent.sh'
 chmod +x "$SERVICE_FILE"
 echo ""
 
 echo "--- Download agent ---"
-wget -q -O "$DAEMON_FILE" 'https://gist.githubusercontent.com/kirann42/6073d9efc2b4fdca4fce/raw/ed7bbf5e996cc5c1f216e718bbb4991681c58a8f/Agent.py'
+wget -q -O "$DAEMON_FILE" 'https://raw.githubusercontent.com/basivireddy/server_monitor/master/Agent.py'
 chmod +x "$DAEMON_FILE"
 echo ""
 
 echo "--- Download checks ---"
-wget -q -O "$SYSTEM_CHECK" 'https://gist.githubusercontent.com/kirann42/7c0c92af086c6bccce2f/raw/6afdb7dc527709ca94c12816a7dabbd7325f8bdb/SystemCheck.py'
+wget -q -O "$SYSTEM_CHECK" 'https://raw.githubusercontent.com/basivireddy/server_monitor/master/SystemCheck.py'
 chmod +x "$SYSTEM_CHECK"
-wget -q -O "$NETWORK_CHECK" 'https://gist.githubusercontent.com/kirann42/90ff4553bce0aa500485/raw/f6671b376f69320cc4f049d2b25f2b0bd614b356/NetworkCheck.py'
+wget -q -O "$NETWORK_CHECK" 'https://raw.githubusercontent.com/basivireddy/server_monitor/master/NetworkCheck.py'
 chmod +x "$NETWORK_CHECK"
 echo ""
 
@@ -56,7 +56,7 @@ prompt_token() {
 #  exit 1
 #fi
 
-NAME="n42agent"
+NAME="monitoragent"
 
 echo ""
 
@@ -74,34 +74,34 @@ else
   echo "[----------Installation started ---------------]"
   echo ""
   echo "[------------Agent Cleanup Started(Removing Old Agents for fresh installation)-----------]"   
-  if service --status-all |& grep -Fq 'n42agent';
+  if service --status-all |& grep -Fq 'monitoragent';
   then 
-       service n42agent stop
+       service monitoragent stop
        echo "Please type yes as the answer as we are removing old Agents"   
-       service n42agent uninstall    
+       service monitoragent uninstall    
   fi	
-  if [ -f /opt/agents/n42/SystemCheck.py ];
+  if [ -f /opt/agents/monitor/SystemCheck.py ];
   then 
-      rm -r /opt/agents/n42/
-      rm /etc/init.d/n42agent        
+      rm -r /opt/agents/monitor/
+      rm /etc/init.d/monitoragent        
   fi
   echo "[------------Agent Cleanup Ended-----------]"   
   echo ""
-  if [[ ! -e /opt/agents/n42/ ]]; 
+  if [[ ! -e /opt/agents/monitor/ ]]; 
   then
        #echo "creating agents directory for installing n42agent"	
-       mkdir -p /opt/agents/n42/
+       mkdir -p /opt/agents/monitor/
        if [ $? -ne 0 ];
        then
-            echo "could not create directory : /opt/agents/n42/"
+            echo "could not create directory : /opt/agents/monitor/"
             exit 1
        fi
   fi  
   echo "[------------Copying the Agents Started -----------]"   
-  #echo "mv \"$DAEMON_FILE\" \"/opt/agents/n42\""
-  mv -v "$DAEMON_FILE" "/opt/agents/n42/"
-  mv -v "$SYSTEM_CHECK" "/opt/agents/n42/"
-  mv -v "$NETWORK_CHECK" "/opt/agents/n42/"
+  #echo "mv \"$DAEMON_FILE\" \"/opt/agents/monitor\""
+  mv -v "$DAEMON_FILE" "/opt/agents/monitor/"
+  mv -v "$SYSTEM_CHECK" "/opt/agents/monitor/"
+  mv -v "$NETWORK_CHECK" "/opt/agents/monitor/"
   #echo "mv \"$SERVICE_FILE\" \"/etc/init.d/$NAME\""
   mv -v "$SERVICE_FILE" "/etc/init.d/$NAME"
   echo "[------------Copying the Agents Ended --------------]"   
@@ -119,9 +119,9 @@ echo ""
 echo ""
 echo ""
 echo "[--------------Agent usage Instructions------------------]"
-echo "To start the agent : service n42agent start"
-echo "To stop the agent : service n42agent stop"
-echo "To uninstall the agent : service n42agent uninstall"
+echo "To start the agent : service monitoragent start"
+echo "To stop the agent : service monitoragent stop"
+echo "To uninstall the agent : service monitoragent uninstall"
 echo "[--------------------------------------------------------]"
 #echo "---Uninstall instructions ---"
 #echo "The service can uninstall itself:"
