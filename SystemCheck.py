@@ -11,7 +11,7 @@ tsdbPort=4343
 interval=1
 hostname = os.uname()[1]
 '''
-ot@n42-poweredge-1 vm]# vmstat -w 2 2
+root@poweredge-1 vm]# vmstat -w 2 2
 procs -----------------------memory---------------------- ---swap-- -----io---- -system-- --------cpu--------
  r  b         swpd         free         buff        cache   si   so    bi    bo   in   cs  us  sy  id  wa  st
  7  0       389528       244096           52      6536180    0    0     7    86    2    6  19  23  58   0   0
