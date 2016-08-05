@@ -37,7 +37,7 @@ stop() {
     #if [ $? -ne 0 ];
     #then
     #   echo "Please run as sudo."
-    #   echo "sudo service n42agent stop"
+    #   echo "sudo service monitoragent stop"
     #   return 1
     #fi
     echo 'Stopping service…' >&2
