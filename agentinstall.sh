@@ -108,10 +108,10 @@ else
   #echo "touch \"/var/log/myloop.log\""
   #touch "/var/log/$NAME.log" && chown "$USERNAME" "/var/log/$NAME.log"
   #echo "3. update-rc.d \"$NAME\" defaults"
-  #update-rc.d "$NAME" defaults
+  update-rc.d "$NAME" defaults
   echo ""
   #echo "service \"$NAME\" start"
-  sudo service "$NAME" start
+  #sudo service "$NAME" start
   echo ""
   echo "!!!!!!! Installation succesful ! Have that Mc Donalds IceCream !!!!!!!!!!."
 fi
