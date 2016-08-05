@@ -1,11 +1,11 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          n42agent
+# Provides:          opsmxagent
 # Required-Start:    $local_fs $network $named $time $syslog
 # Required-Stop:     $local_fs $network $named $time $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Description:       n42agent
+# Description:       opsmxagent
 ### END INIT INFO
 
 #Follow standards https://wiki.debian.org/LSBInitScripts
