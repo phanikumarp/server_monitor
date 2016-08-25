@@ -86,7 +86,7 @@ def main():
         interfaes_statictics_list_second = subprocess.check_output("cat /proc/net/dev",shell=True).split('\n');
         second = proc_net_dev_parse(interfaes_statictics_list_second)
         difference(first,second)
-        transferrate()
+        #transferrate()
         utilization()
         if_metrics = {'rbytes':'system.net.bytes_rcvd','tbytes':'system.net.bytes_send','rutil':'system.net.in_util','tutil':'system.net.out_util','rrate':'system.net.received_rate','trate':'system.net.transmit_rate','rerrs':'system.net.packets_in.error','terrs':'system.net.packets_out.error','rdrop':'system.net.packets_in.drops','tdrop':'system.net.packets_out.drops'}
         #print if_metrics,if_metrics['rbytes'],if_metrics["rbytes"]
