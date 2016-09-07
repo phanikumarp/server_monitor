@@ -11,7 +11,7 @@ tsdbPort=4343
 interval=1
 hostname = os.uname()[1]
 import urllib2
-response = urllib2.urlopen("http://169.254.169.254/latest/meta-data/ami-id")
+response = urllib2.urlopen("http://169.254.169.254/latest/meta-data/instance-id")
 instanceid = response.read()
 '''
 root@poweredge-1 vm]# vmstat -w 2 2
