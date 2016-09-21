@@ -12,6 +12,8 @@ echo ""
 
 echo "--- Download agent ---"
 wget -q -O "$DAEMON_FILE" 'https://raw.githubusercontent.com/OpsMx/server_monitor/master/Agent.py'
+wget -q -O "Utils.py" 'https://raw.githubusercontent.com/OpsMx/server_monitor/master/Utils.py'
+wget -q -O "__init__.py" 'https://raw.githubusercontent.com/OpsMx/server_monitor/master/__init__.py'
 chmod +x "$DAEMON_FILE"
 echo ""
 
