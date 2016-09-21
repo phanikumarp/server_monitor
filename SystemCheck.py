@@ -11,7 +11,7 @@ tsdbIp="52.8.104.253"
 tsdbPort=4343
 interval=1
 hostname = os.uname()[1]
-scaling_group = EC2.get_scaling_groups()
+scaling_group = EC2.get_scaling_group()
 import urllib2
 response = urllib2.urlopen("http://169.254.169.254/latest/meta-data/instance-id")
 instanceid = response.read()
