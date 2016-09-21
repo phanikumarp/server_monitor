@@ -104,6 +104,8 @@ else
   mv -v "$DAEMON_FILE" "/opt/agents/monitor/"
   mv -v "$SYSTEM_CHECK" "/opt/agents/monitor/"
   mv -v "$NETWORK_CHECK" "/opt/agents/monitor/"
+  mv -v "Utils.py" "/opt/agents/monitor/"
+  mv -v "__init__.py" "/opt/agents/monitor/"
   #echo "mv \"$SERVICE_FILE\" \"/etc/init.d/$NAME\""
   mv -v "$SERVICE_FILE" "/etc/init.d/$NAME"
   echo "[------------Copying the Agents Ended --------------]"   
