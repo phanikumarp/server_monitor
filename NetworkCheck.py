@@ -5,11 +5,13 @@ import sys
 import re
 import json
 import potsdb,sys,linecache,time,math
+from Utils import EC2
 from string import rstrip
 tsdbIp="52.8.104.253"
 tsdbPort=4343
 interval=1
 hostname = os.uname()[1]
+scaling_group = EC2.get_scaling_group()
 import urllib2
 response = urllib2.urlopen("http://169.254.169.254/latest/meta-data/instance-id")
 instanceid = response.read()
@@ -95,8 +97,8 @@ def main():
                 metrics = potsdb.Client(tsdbIp, port=tsdbPort,qsize=1000, host_tag=True, mps=100, check_host=True)
                 for k,v in in_statictics.iteritems():
                         for k1,v1 in v.iteritems():
-                                metrics.send(if_metrics[k1],v1,interface=k,host=hostname,instanceid=instanceid)
-                                print if_metrics[k1],v1,"interface=",k,"host="+hostname,"instanceid"+instanceid
+                                metrics.send(if_metrics[k1],v1,interface=k,host=hostname,instanceid=instanceid,scalinggroup=scaling_group)
+                                print if_metrics[k1],v1,"interface=",k,"host="+hostname,"instanceid"+instanceid,"scalinggroup"+scaling_group
                 metrics.wait()
                 print "========= drops   packets,error  int,util   %,rate  kB/s ======="
         except Exception ,e :
